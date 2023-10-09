@@ -25,6 +25,7 @@ class Tesztesetek {
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
     private final PrintStream originalErr = System.err;
+    private int a=0;
 
     @Before
     void setUpStreams() {
@@ -44,12 +45,31 @@ class Tesztesetek {
     }
     @Test
     void tesztSzam() {
-        int a=ds.beolvas();
+        a=ds.beolvas();
         assertTrue(a>=1 && a<=6,"O.K.");
     }
     @Test
     void tesztHossz(){
-        ds.leghosszabb(6);
-        assertEquals("6666: 4", outContent.toString());
+        ds.leghosszabb(a);
+        switch(a){
+            case 1:
+                assertEquals("1111: 4", outContent.toString());
+                break;
+            case 2:
+                assertEquals("2: 1", outContent.toString());
+                break;
+            case 3:
+                assertEquals("3: 1", outContent.toString());
+                break;
+            case 4:
+                assertEquals("4444: 4", outContent.toString());
+                break;
+            case 5:
+                assertEquals("5555: 4", outContent.toString());
+                break;
+            case 6:
+                assertEquals("6666: 4", outContent.toString());
+                break;
+        }
     }
 }
